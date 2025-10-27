@@ -3,10 +3,10 @@ services:
   db:
     image: postgres
     environment:
-       POSTGRES_PASSWORD: galak
+       POSTGRES_PASSWORD: #
     ports:
       - "5432:5432"
   adminer:
-    image: adminer
+    image: #
     ports:
       - "8080:8080"
