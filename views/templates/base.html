@@ -1,0 +1,28 @@
+{{ define "base" }}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/style.css">
+    <script src="/static/js/index.js"></script>
+    <title>{{ template "title" . }} - Quicknotes</title>
+</head>
+<body>
+    <header>
+        <div class="logo">Quicknotes</div>
+        <nav>
+            <a href="/">Home</a>
+        </nav>
+    </header>
+    <main>
+        {{ template "main" . }}
+    </main>
+    <footer>
+        &copy;2025 - Vai tomar no CU
+    </footer>
+</body>
+</html>
+
+{{ end }}

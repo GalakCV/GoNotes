@@ -1,0 +1,22 @@
+{{ define "title" }}Home Page{{ end }}
+
+{{ define "main" }}
+
+{{if eq (len .) 0 }}
+<h3>Nenhuma anotacao criada</h3>
+{{end}}
+
+
+<div class="notes-container">
+{{range .}}
+<div id = "{{.Id}}"class="note"></div>
+<p class="title"></p>
+<div class="content">{{.Content}}</div>
+<div class="footer">
+    <a href="">Deletar</a>
+</div>
+{{end}}
+</div>
+
+
+{{end}}
