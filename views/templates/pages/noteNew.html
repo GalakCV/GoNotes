@@ -3,5 +3,13 @@
 
 <h1>Nova anotacao</h1>
 <p>Formulario de criacao</p>
-
+<form action="/note/create" method="post">
+    <label for="title">Titulo</label>
+    <p><input type="text" name="title" id="title"></p>
+    <p><input type="text" name="color" id="color"></p> 
+    <p><label for="content">Conteudo</label></p>
+    <textarea name="content" id="content" cols="30" rows="10"></textarea>
+    <button type="submit">Salvar</button>
+    <button>Cancelar</button>
+</form>
 {{end}}
