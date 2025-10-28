@@ -8,6 +8,7 @@ import (
 	"html/template"
 	"net/http"
 	"strconv"
+
 	"udemy.com/galakcv/aulago/internal/handlers/apperror"
 	"udemy.com/galakcv/aulago/internal/repositories"
 )
@@ -102,10 +103,19 @@ func (nh *noteHandler) NoteNew(w http.ResponseWriter, r *http.Request) {
 
 func (nh *noteHandler) NoteCreate(w http.ResponseWriter, r *http.Request){
 	
-	if r.Method != http.MethodPost {
-		w.Header().Set("Allow", http.MethodPost)
-		http.Error(w, "Invalid request", http.StatusMethodNotAllowed)
+	err := r.ParseForm()
+	if err != nil {
 		return 
 	}
-	fmt.Fprintf(w, "Creating a new note...")
+	title := r.PostForm.Get("title")
+	content := r.PostForm.Get("content")
+	color := r.PostForm.Get("color")
+
+	note, err := nh.repo.Create(r.Context(), title, content, color)
+	if err != nil {
+		return 
+	}
+
+	http.Redirect(w, r, fmt.Sprintf("/note/view?id=%d", note.Id.Int), http.StatusSeeOther)
+	
 }
